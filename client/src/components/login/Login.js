@@ -1,12 +1,12 @@
 import React from 'react'
 import { LoginComponent } from './components';
 
-const Login = () => {
+const Login = ({setToken}) => {
     
   return (
 
     <div>
-        <LoginComponent/>
+        <LoginComponent setToken={setToken}/>
     </div>
   )
 };

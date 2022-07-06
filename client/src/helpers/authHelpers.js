@@ -1,10 +1,22 @@
 import axios from 'axios';
+var CryptoJS = require("crypto-js");
 
 export const loginAdmin = async(adminPayload) => {
-    axios
-        .post(`http://localhost:4000/admin/login`, adminPayload)
-        .then((res)=>{
-            console.log("Estoy en la respuesta del axios");
-        })
-        .catch((error)=>{console.log(error)})
+
+    try{
+        return await axios.post(`http://localhost:4000/admin/login`, adminPayload);
+    } catch (error) {
+        return false
+    }
+}
+
+
+export const saveAuthAdmin = async (user, token) =>{
+
+}
+
+
+export const encript = async (data) => {
+    var ciphertext = await CryptoJS.AES.encrypt(data).toString();
+    return ciphertext;
 }

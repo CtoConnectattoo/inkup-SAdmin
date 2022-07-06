@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { loginAdmin } from '../../../helpers/authHelpers';
 
-export const LoginComponent = () => {
+export const LoginComponent = ({setToken}) => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     
@@ -12,13 +12,14 @@ export const LoginComponent = () => {
 
     const onFormSubmit = async (e) =>{
         e.preventDefault();
-         const email = emailRef.current.value;
-         const password = passwordRef.current.value;
-         console.log(email);
 
         try{
-        let response = await loginAdmin({email, password});
-        }catch (error) {}
+          const email = emailRef.current.value;
+          const password = passwordRef.current.value;
+          let response = await loginAdmin({email, password});
+          console.log(response);
+        }
+        catch (error) {}
     };
     
 
