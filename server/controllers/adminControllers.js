@@ -35,6 +35,7 @@ class adminController {
   //2.- Login
   //localhost:4000/users/login
   login = (req, res) => {
+    console.log("Requteholaaaaa");
     console.log(req.body);
      let { email, password } = req.body;
      let sql = `SELECT * FROM adminuser WHERE email = '${email}'`;

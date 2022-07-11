@@ -3,10 +3,12 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { loginAdmin } from '../../../helpers/authHelpers';
+import {useNavigate} from 'react-router-dom'; 
 
-export const LoginComponent = ({setToken}) => {
+export const LoginComponent = ({setToken, token}) => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const navigate = useNavigate();
     
 
 
@@ -18,10 +20,16 @@ export const LoginComponent = ({setToken}) => {
           const password = passwordRef.current.value;
           let response = await loginAdmin({email, password});
           console.log(response);
+          if (response.data){
+            setToken(response.data.token)
+            navigate("/inicio")
+
+           
+          }
         }
         catch (error) {}
     };
-    
+     console.log("soy el token", token);
 
   return (
     <>
